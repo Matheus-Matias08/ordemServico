@@ -1,46 +1,47 @@
-CREATE DATABASE dbos2025;
-USE dbos2025;
+create database dbOs2025;
+use dbos2025;
 
-CREATE TABLE tbusuarios(
-	iduser INT PRIMARY KEY,
-    usuario VARCHAR(15) NOT NULL,
-    fone VARCHAR(15),
-    login VARCHAR(15) NOT NULL UNIQUE,
-    senha VARCHAR(50) NOT NULL,
-    perfil VARCHAR(20) NOT NULL
+create table tbusuarios(
+	iduser int primary key, 
+    usuario varchar(15) not null,
+    fone varchar(15),
+    login varchar(15) not null unique,
+    senha varchar(250) not null,
+    perfil varchar(20) not null
 );
 
-SELECT * FROM tbusuarios;
+select * from tbusuarios;
 
-DESCRIBE tbusuarios;
+describe tbusuarios;
 
-INSERT INTO tbusuarios(iduser, usuario, fone, login, senha, perfil) 
-VALUES (1,"Pedro", "(66) 996131680", "pedro.usuario","pedro123","Sim");
+insert into tbusuarios (iduser, usuario, fone, login, senha, perfil)
+values (1,"cleber feitosa", '66999326633', "cleber feitosa", "123456",
+"Admin");
 
-CREATE TABLE tbclientes(
-	idcli INT PRIMARY KEY AUTO_INCREMENT,
-    nomecli VARCHAR(50) NOT NULL,
-    endcli VARCHAR(100),
-    fonecli VARCHAR(15) NOT NULL,
-    emailcli VARCHAR(50) UNIQUE
+create table tbclientes(
+	idcli int primary key auto_increment,
+    nomecli varchar(50) not null,
+    endcli varchar(100),
+    fonecli varchar(15) not null,
+    emailcli varchar(50) unique
 );
 
-DESCRIBE tbclientes;
+insert into tbclientes (nomecli, endcli,fonecli, emailcli) values
+("João da Silva", "Rua XV", "66-9999-9999", "joao.silva@gmail.com");
 
-SELECT * FROM tbclientes;
-INSERT INTO tbclientes (nomecli, endcli, fonecli, emailcli)
-VALUES ("Lewis","2021 roubado","(66) 9920184451","lewis.willsmith");
+select * from tbclientes;
 
-CREATE TABLE tbos(
-	os INT PRIMARY KEY AUTO_INCREMENT,
-    data_os TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    tipo VARCHAR(15) NOT NULL,
-    situacao VARCHAR(20) NOT NULL,
-    equipamento VARCHAR(150) NOT NULL,
-    defeito VARCHAR(150),
-    servico VARCHAR(150),
-    tecnico VARCHAR(30),
-    valor DECIMAL(10,2),
-    idcli INT NOT NULL,
-    FOREIGN KEY(idcli) REFERENCES tbclientes(idcli)
-);	
+create table tbos(
+	os int primary key auto_increment,
+    data_os timestamp default current_timestamp,
+    tipo varchar(15) not null,
+    situacao varchar(20) not null,
+    equipamento varchar(150) not null,
+    defeito varchar(150),
+    servico varchar(150),
+    tecnico varchar(30),
+    valor decimal(10,2),
+    idcli int not null,
+    foreign key(idcli) references tbclientes(idcli)
+);
+
