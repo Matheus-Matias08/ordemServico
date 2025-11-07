@@ -275,7 +275,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jMnItmClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItmClienteActionPerformed
-        // TODO add your handling code here:
+        TelaCliente usuario = new TelaCliente();
+        usuario.setVisible(true);
+        jDesktopPane1.add(usuario);
     }//GEN-LAST:event_jMnItmClienteActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

@@ -288,13 +288,8 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
        }
        else{
            UsuarioDAO dao = new UsuarioDAO();
-           Usuario usuario = new Usuario();
-           usuario = dao.buscarUsuario(Integer.parseInt(txtUserId.getText()));
-           txtUserName.setText(usuario.getUsuario());
-           txtUserLogin.setText(usuario.getLogin());
-           txtUserFone.setText(usuario.getFone());
-           txtUserProfile.setSelectedItem(usuario.getPerfil());
-           txtUserSenha.setText(usuario.getSenha());
+           dao.deleterUsuario(Integer.parseInt(txtUserId.getText()));
+           
            
        }
     }//GEN-LAST:event_btnUserDeleteActionPerformed

@@ -34,7 +34,7 @@ public class UsuarioDAO {
         try {
 
             //1 passo - SQLa
-            String sql = "select * from tbusuarios where usuario = ? and senha = ?";
+            String sql = "select * from tbusuarios where login = ? and senha = md5(?)";
             PreparedStatement stmt;
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, usuario);
@@ -68,7 +68,7 @@ public class UsuarioDAO {
     }
     public void adicionarUsuario(Usuario obj){
         try{
-            String sql = "insert into tbusuarios(iduser,usuario,fone,login,senha,perfil) values(?,?,?,?,?,?)";
+            String sql = "insert into tbusuarios(iduser,usuario,fone,login,senha,perfil) values(?,?,?,?,md5(?),?)";
             conexao = ModuloConexao.conectar();
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, obj.getIdUser());
@@ -124,7 +124,7 @@ public class UsuarioDAO {
     }
     public void alterarUsuario(Usuario obj){
         try{
-            String sql = "UPDATE tbusuarios SET usuario = ?, fone = ?, login = ?, senha = ?, perfil = ? WHERE iduser = ?;";
+            String sql = "UPDATE tbusuarios SET usuario = ?, fone = ?, login = ?, senha = md5(?), perfil = ? WHERE iduser = ?;";
             conexao = ModuloConexao.conectar();
             PreparedStatement stmt = conexao.prepareStatement(sql);
             
@@ -154,18 +154,18 @@ public class UsuarioDAO {
     
     public Usuario deleterUsuario(int id){
         try{
-            String sql = "DELETE * FROM tbusuarios WHERE iduser = ?;";
+            String sql = "DELETE FROM tbusuarios WHERE iduser = ?;";
             conexao = ModuloConexao.conectar();
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next()){
-               JOptionPane.showMessageDialog(null,"Usuário deleteado");
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"Usuário não encontrado");
-            }
-            stmt.close();
+//            ResultSet rs = stmt.executeQuery();;
+//            if(rs.next()){
+//               JOptionPane.showMessageDialog(null,"Usuário deleteado");
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(null,"Usuário não encontrado");
+//            }
+//            stmt.close();
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
