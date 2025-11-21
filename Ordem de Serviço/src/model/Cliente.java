@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author GERAL
+ * @author clebe
  */
 public class Cliente {
     private int id;
@@ -17,12 +17,20 @@ public class Cliente {
     
     public Cliente(){
         
-    }
+    };
 
     public Cliente(String nome, String endereco, String fone, String email) {
         this.nome = nome;
         this.endereco = endereco;
         this.fone = fone;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -58,18 +66,10 @@ public class Cliente {
         this.fone = fone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + this.id;
+        hash = 59 * hash + this.id;
         return hash;
     }
 
@@ -87,6 +87,8 @@ public class Cliente {
         final Cliente other = (Cliente) obj;
         return this.id == other.id;
     }
+    
+    
     
     
 }
